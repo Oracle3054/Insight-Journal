@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Meet Oracle, the person behind The Insight Journal. A personal journey through life's difficult questions, healing, self-discovery, and the courage to begin again.">
+
+    <meta name="theme-color" content="#101820">
+
+    <title>About Oracle — The Insight Journal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           GLOBAL VARIABLES
+        ========================================= */
+
+        :root {
+            --background: #101820;
+            --background-light: #16212b;
+            --background-soft: #1c2934;
+
+            --gold: #d6aa65;
+            --gold-light: #efd4a2;
+
+            --text: #f2eee7;
+            --text-muted: #a6afb6;
+
+            --border: rgba(255, 255, 255, 0.10);
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "DM Sans", sans-serif;
+
+            --container: 1180px;
+        }
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: var(--sans);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: var(--background);
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .serif {
+            font-family: var(--serif);
+        }
+
+        .gold {
+            color: var(--gold);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-heading {
+            font-family: var(--serif);
+            font-size: clamp(35px, 5vw, 57px);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -1.2px;
+        }
+
+        .section-description {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 580px;
+        }
+
+        /* =========================================
+           READING PROGRESS
+        ========================================= */
+
+        .reading-progress {
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 3px;
+
+            background: var(--gold);
+            box-shadow: 0 0 12px rgba(214, 170, 101, 0.35);
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .site-header {
+            position: sticky;
+            z-index: 1000;
+            top: 0;
+
+            background: rgba(16, 24, 32, 0.92);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            min-height: 86px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 13px;
+
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--gold);
+            color: var(--gold);
+
+            font-family: var(--serif);
+            font-size: 25px;
+            font-style: italic;
+        }
+
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .brand-caption {
+            display: block;
+            margin-top: 5px;
+
+            color: var(--text-muted);
+
+            font-family: var(--sans);
+            font-size: 8px;
+            letter-spacing: 2.3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: var(--text-muted);
+            font-size: 12px;
+
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+
+            width: 100%;
+            height: 1px;
+
+            background: var(--gold);
+        }
+
+        .nav-cta {
+            padding: 11px 17px;
+
+            border: 1px solid rgba(214, 170, 101, 0.55);
+            color: var(--gold) !important;
+
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--background) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid var(--border);
+            background: transparent;
+
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        /* =========================================
+           HERO — THE OPENING CHAPTER
+        ========================================= */
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+
+            min-height: 700px;
+
+            display: flex;
+            align-items: center;
+
+            border-bottom: 1px solid var(--border);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(16, 24, 32, 0.99) 0%,
+                    rgba(16, 24, 32, 0.95) 43%,
+                    rgba(16, 24, 32, 0.57) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    rgba(16, 24, 32, 0.70),
+                    transparent 55%
+                ),
+                url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85")
+                center 47% / cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+            z-index: -1;
+
+            width: 480px;
+            height: 480px;
+
+            top: 8%;
+            right: -170px;
+
+            border: 1px solid rgba(214, 170, 101, 0.15);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            z-index: -1;
+
+            width: 330px;
+            height: 330px;
+
+            top: 18%;
+            right: -95px;
+
+            border: 1px solid rgba(214, 170, 101, 0.11);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 790px;
+            padding: 100px 0 115px;
+        }
+
+        .hero-kicker {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            margin-bottom: 27px;
+
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-kicker span {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            max-width: 820px;
+
+            font-family: var(--serif);
+            font-size: clamp(52px, 8vw, 94px);
+            font-weight: 400;
+
+            line-height: 1.08;
+            letter-spacing: -2.7px;
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .hero-description {
+            max-width: 590px;
+            margin-top: 30px;
+
+            color: #c2c8cd;
+            font-size: 16px;
+            line-height: 2;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 25px;
+
+            margin-top: 36px;
+        }
+
+        .button-primary {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+
+            min-height: 51px;
+            padding: 13px 22px;
+
+            background: var(--gold);
+            color: var(--background);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-3px);
+            background: var(--gold-light);
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--text);
+            font-size: 12px;
+
+            transition: color 0.25s ease;
+        }
+
+        .text-link:hover {
+            color: var(--gold);
+        }
+
+        .hero-signature {
+            margin-top: 60px;
+
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .signature-line {
+            width: 43px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .signature-name {
+            color: var(--gold);
+            font-family: var(--serif);
+            font-size: 21px;
+            font-style: italic;
+        }
+
+        .signature-label {
+            color: var(--text-muted);
+            font-size: 9px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           CHAPTER LABEL
+        ========================================= */
+
+        .chapter-label {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+
+            margin-bottom: 32px;
+
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .chapter-number {
+            width: 37px;
+            height: 37px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid rgba(214, 170, 101, 0.45);
+            border-radius: 50%;
+
+            font-family: var(--serif);
+            font-size: 14px;
+            letter-spacing: 0;
+        }
+
+        /* =========================================
+           CHAPTER ONE — THE PERSON BEHIND THE NAME
+        ========================================= */
+
+        .origin-section {
+            padding: 120px 0;
+        }
+
+        .origin-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .origin-aside {
+            position: sticky;
+            top: 130px;
+        }
+
+        .origin-aside .section-heading {
+            font-size: clamp(37px, 4.5vw, 55px);
+        }
+
+        .aside-note {
+            margin-top: 25px;
+            padding: 20px 0 20px 20px;
+
+            border-left: 1px solid var(--gold);
+
+            color: var(--text-muted);
+            font-family: var(--serif);
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .story-copy {
+            color: #c4cbd0;
+            font-family: var(--serif);
+            font-size: 18px;
+            line-height: 2.05;
+        }
+
+        .story-copy p + p {
+            margin-top: 27px;
+        }
+
+        .story-copy strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .story-copy .dropcap::first-letter {
+            float: left;
+
+            margin: 8px 13px 0 0;
+
+            color: var(--gold);
+            font-family: var(--serif);
+            font-size: 76px;
+            line-height: 0.75;
+        }
+
+        .story-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            margin: 38px 0;
+
+            color: var(--gold);
+            font-size: 17px;
+            letter-spacing: 5px;
+        }
+
+        .story-divider::before,
+        .story-divider::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--border);
+        }
+
+        /* =========================================
+           PULL QUOTE
+        ========================================= */
+
+        .quote-section {
+            position: relative;
+            overflow: hidden;
+
+            padding: 100px 24px;
+
+            background: var(--background-light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quote-section::before {
+            content: "“";
+
+            position: absolute;
+            top: -105px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            color: rgba(214, 170, 101, 0.055);
+            font-family: var(--serif);
+            font-size: 380px;
+            line-height: 1;
+        }
+
+        .quote-inner {
+            position: relative;
+            max-width: 900px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .quote-mark {
+            color: var(--gold);
+            font-family: var(--serif);
+            font-size: 60px;
+            line-height: 1;
+        }
+
+        .quote-inner blockquote {
+            margin-top: 20px;
+
+            font-family: var(--serif);
+            font-size: clamp(30px, 5vw, 51px);
+            font-weight: 400;
+
+            line-height: 1.45;
+        }
+
+        .quote-inner blockquote em {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .quote-credit {
+            margin-top: 30px;
+
+            color: var(--text-muted);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           CHAPTER TWO — WHAT WE HIDE
+        ========================================= */
+
+        .hidden-section {
+            padding: 120px 0;
+        }
+
+        .center-heading {
+            max-width: 780px;
+            margin: 0 auto 70px;
+            text-align: center;
+        }
+
+        .center-heading .eyebrow {
+            justify-content: center;
+        }
+
+        .center-heading .section-heading {
+            margin-top: 23px;
+        }
+
+        .center-heading .section-description {
+            margin: 23px auto 0;
+        }
+
+        .hidden-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .hidden-card {
+            min-height: 300px;
+            padding: 35px 30px;
+
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.025),
+                    transparent 70%
+                );
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .hidden-card:hover {
+            transform: translateY(-7px);
+
+            border-color: rgba(214, 170, 101, 0.5);
+            background: rgba(214, 170, 101, 0.035);
+        }
+
+        .card-number {
+            color: var(--gold);
+            font-family: var(--serif);
+            font-size: 17px;
+            font-style: italic;
+        }
+
+        .hidden-card h3 {
+            margin-top: 28px;
+
+            font-family: var(--serif);
+            font-size: 27px;
+            font-weight: 400;
+
+            line-height: 1.35;
+        }
+
+        .hidden-card p {
+            margin-top: 16px;
+
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* =========================================
+           CHAPTER THREE — THE THINGS I AM LEARNING
+        ========================================= */
+
+        .lessons-section {
+            padding: 115px 0;
+
+            background: var(--background-light);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 85px;
+            align-items: start;
+        }
+
+        .lessons-intro {
+            position: sticky;
+            top: 130px;
+        }
+
+        .lessons-intro .section-heading {
+            margin-top: 22px;
+        }
+
+        .lessons-intro .section-description {
+            margin-top: 25px;
+            line-height: 2;
+        }
+
+        .lesson-list {
+            border-top: 1px solid var(--border);
+        }
+
+        .lesson-item {
+            display: grid;
+            grid-template-columns: 45px 1fr;
+            gap: 20px;
+
+            padding: 25px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-index {
+            padding-top: 3px;
+
+            color: var(--gold);
+            font-family: var(--serif);
+            font-size: 17px;
+            font-style: italic;
+        }
+
+        .lesson-item h3 {
+            font-family: var(--serif);
+            font-size: 23px;
+            font-weight: 400;
+        }
+
+        .lesson-item p {
+            margin-top: 9px;
+
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* =========================================
+           CHAPTER FOUR — A LETTER TO THE READER
+        ========================================= */
+
+        .letter-section {
+            padding: 125px 0;
+        }
+
+        .letter-layout {
+            display: grid;
+            grid-template-columns: 0.65fr 1.35fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .letter-heading {
+            position: sticky;
+            top: 130px;
+        }
+
+        .letter-heading .section-heading {
+            margin-top: 23px;
+        }
+
+        .letter-paper {
+            position: relative;
+
+            padding: 55px 52px;
+
+            background: #e9dfcf;
+            color: #252b30;
+
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.16);
+
+            transform: rotate(-0.35deg);
+        }
+
+        .letter-paper::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 5px;
+            background: var(--gold);
+        }
+
+        .letter-label {
+            color: #87734f;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .letter-paper h3 {
+            margin-top: 25px;
+
+            font-family: var(--serif);
+            font-size: 34px;
+            font-weight: 400;
+
+            line-height: 1.3;
+        }
+
+        .letter-body {
+            margin-top: 26px;
+
+            font-family: var(--serif);
+            font-size: 17px;
+            line-height: 2;
+        }
+
+        .letter-body p + p {
+            margin-top: 20px;
+        }
+
+        .letter-signoff {
+            margin-top: 35px;
+
+            color: #725b37;
+            font-family: var(--serif);
+            font-size: 25px;
+            font-style: italic;
+        }
+
+        .letter-small {
+            margin-top: 4px;
+
+            color: #68645d;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           REFLECTION ROOM
+        ========================================= */
+
+        .reflection-section {
+            padding: 110px 0;
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 0%,
+                    rgba(214, 170, 101, 0.09),
+                    transparent 65%
+                ),
+                var(--background-light);
+
+            border-top: 1px solid var(--border);
+        }
+
+        .reflection-inner {
+            max-width: 800px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .reflection-inner .section-heading {
+            margin-top: 24px;
+        }
+
+        .reflection-inner > p {
+            max-width: 630px;
+            margin: 22px auto 0;
+
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .reflection-prompts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px;
+
+            margin-top: 45px;
+            text-align: left;
+        }
+
+        .reflection-prompt {
+            padding: 23px 25px;
+
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .reflection-prompt span {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .reflection-prompt p {
+            font-family: var(--serif);
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        .reflection-note {
+            margin-top: 25px !important;
+            font-size: 11px !important;
+        }
+
+        /* =========================================
+           FINAL INVITATION
+        ========================================= */
+
+        .invitation-section {
+            padding: 115px 0;
+            text-align: center;
+        }
+
+        .invitation-inner {
+            max-width: 760px;
+            margin-inline: auto;
+        }
+
+        .invitation-inner .section-heading {
+            margin-top: 25px;
+        }
+
+        .invitation-inner > p {
+            max-width: 620px;
+            margin: 25px auto 0;
+
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .invitation-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+
+            margin-top: 35px;
+        }
+
+        .button-outline {
+            min-height: 51px;
+            padding: 13px 22px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+            color: var(--text);
+
+            font-size: 12px;
+
+            transition:
+                border-color 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .button-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .site-footer {
+            padding: 55px 0 25px;
+
+            border-top: 1px solid var(--border);
+            background: #0c1218;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+
+            padding-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 340px;
+        }
+
+        .footer-brand > p {
+            margin-top: 18px;
+
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 11px;
+            transition: color 0.25s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            padding-top: 23px;
+
+            border-top: 1px solid var(--border);
+
+            color: #7e8992;
+            font-size: 10px;
+        }
+
+        .footer-note {
+            max-width: 550px;
+            text-align: right;
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           SCROLL REVEAL
+        ========================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           RESPONSIVE TABLET
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 17px;
+            }
+
+            .origin-grid {
+                gap: 50px;
+            }
+
+            .lessons-grid {
+                gap: 50px;
+            }
+
+            .letter-layout {
+                gap: 45px;
+            }
+
+            .letter-paper {
+                padding: 42px 35px;
+            }
+
+            .hidden-card {
+                padding: 28px 23px;
+            }
+        }
+
+        /* =========================================
+           RESPONSIVE MOBILE
+        ========================================= */
+
+        @media (max-width: 760px) {
+
+            .container {
+                width: min(100% - 36px, var(--container));
+            }
+
+            .navbar {
+                min-height: 74px;
+            }
+
+            .brand-name {
+                font-size: 18px;
+            }
+
+            .brand-mark {
+                width: 39px;
+                height: 39px;
+            }
+
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                z-index: 1001;
+
+                top: 74px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+
+                padding: 25px 24px;
+
+                background: rgba(16, 24, 32, 0.99);
+                backdrop-filter: blur(20px);
+
+                visibility: hidden;
+                opacity: 0;
+
+                transform: translateY(-8px);
+
+                transition:
+                    opacity 0.25s ease,
+                    transform 0.25s ease,
+                    visibility 0.25s ease;
+            }
+
+            .nav-links.open {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .nav-links a {
+                padding: 18px 0;
+                border-bottom: 1px solid var(--border);
+
+                font-size: 14px;
+            }
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .nav-links .nav-cta {
+                margin-top: 20px;
+                padding: 13px 15px;
+                text-align: center;
+            }
+
+            .hero {
+                min-height: auto;
+                background-position: 58% center;
+            }
+
+            .hero-content {
+                padding: 95px 0 85px;
+            }
+
+            .hero h1 {
+                font-size: clamp(47px, 11vw, 73px);
+                letter-spacing: -1.8px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-signature {
+                margin-top: 45px;
+            }
+
+            .origin-section,
+            .hidden-section,
+            .lessons-section,
+            .letter-section,
+            .invitation-section {
+                padding: 80px 0;
+            }
+
+            .origin-grid,
+            .lessons-grid,
+            .letter-layout {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .origin-aside,
+            .lessons-intro,
+            .letter-heading {
+                position: static;
+            }
+
+            .origin-aside .section-heading {
+                max-width: 520px;
+            }
+
+            .story-copy {
+                font-size: 17px;
+            }
+
+            .hidden-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hidden-card {
+                min-height: auto;
+            }
+
+            .center-heading {
+                margin-bottom: 45px;
+            }
+
+            .quote-section {
+                padding: 80px 22px;
+            }
+
+            .quote-inner blockquote {
+                font-size: 32px;
+            }
+
+            .reflection-section {
+                padding: 80px 0;
+            }
+
+            .reflection-prompts {
+                grid-template-columns: 1fr;
+            }
+
+            .letter-paper {
+                padding: 38px 28px;
+                transform: none;
+            }
+
+            .letter-paper h3 {
+                font-size: 29px;
+            }
+
+            .letter-body {
+                font-size: 16px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                gap: 18px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-note {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 420px) {
+
+            .hero-actions {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 46px;
+            }
+
+            .chapter-label {
+                font-size: 9px;
+                letter-spacing: 1.7px;
+            }
+
+            .section-heading {
+                font-size: 36px;
+            }
+
+            .lesson-item {
+                grid-template-columns: 30px 1fr;
+                gap: 12px;
+            }
+
+            .letter-paper {
+                padding: 32px 23px;
+            }
+
+            .invitation-actions {
+                flex-direction: column;
+            }
+
+            .invitation-actions a {
+                width: 100%;
+            }
+        }
+
+        /* =========================================
+           REDUCED MOTION ACCESSIBILITY
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Reading Progress -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container navbar">
+
+            <a href="../index.html" class="brand" aria-label="The Insight Journal homepage">
+
+                <div class="brand-mark">I.</div>
+
+                <div>
+                    <div class="brand-name">The Insight Journal</div>
+                    <span class="brand-caption">Stories that stay with you</span>
+                </div>
+
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
+                ☰
+            </button>
+
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+
+                <a href="../index.html">Home</a>
+
+                <a href="blog.html">Journal</a>
+
+                <a href="categories.html">Categories</a>
+
+                <a href="about.html" class="active" aria-current="page">About Oracle</a>
+
+                <a href="contact.html">Contact</a>
+
+                <a href="newsletter.html" class="nav-cta">Letters to You ↗</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             HERO
+        ========================================= -->
+
+        <section class="hero">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <div class="hero-kicker">
+                        <span></span>
+                        Beyond the words
+                    </div>
+
+                    <h1>
+                        Before you read my words,
+                        <em>meet the person</em>
+                        behind them.
+                    </h1>
+
+                    <p class="hero-description">
+                        My name is Oracle. I am not here to pretend that I have
+                        life figured out. I am here to tell a story, explore
+                        the questions we are sometimes afraid to ask, and make
+                        room for the parts of ourselves we rarely show the world.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#my-story" class="button-primary">
+                            Enter My Story <span>↓</span>
+                        </a>
+
+                        <a href="#letter" class="text-link">
+                            A letter to you <span>↗</span>
+                        </a>
+
+                    </div>
+
+                    <div class="hero-signature">
+
+                        <div class="signature-line"></div>
+
+                        <div>
+                            <div class="signature-name">Oracle</div>
+                            <div class="signature-label">
+                                The voice behind the journal
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CHAPTER ONE
+        ========================================= -->
+
+        <section class="origin-section" id="my-story">
+
+            <div class="container origin-grid">
+
+                <aside class="origin-aside reveal">
+
+                    <div class="chapter-label">
+                        <span class="chapter-number">01</span>
+                        The opening chapter
+                    </div>
+
+                    <h2 class="section-heading">
+                        I am more than the words you <em class="gold">read.</em>
+                    </h2>
+
+                    <p class="aside-note">
+                        Every person carries a story. Some parts are spoken
+                        aloud. Others live quietly in the spaces between
+                        what we feel and what we allow the world to see.
+                    </p>
+
+                </aside>
+
+
+                <div class="story-copy reveal">
+
+                    <p class="dropcap">
+                        If you have come here looking for a perfect person,
+                        someone who has never been confused by life, never
+                        questioned their worth, and never had to gather the
+                        scattered pieces of themselves, then I should tell
+                        you something from the beginning: that is not who I am.
+                    </p>
+
+                    <p>
+                        I am a human being, still learning the meaning of life
+                        one experience at a time. I am someone who understands
+                        that a person can smile and still have questions they
+                        do not know how to answer. Someone can appear strong
+                        while quietly trying to understand what strength
+                        really means.
+                    </p>
+
+                    <p>
+                        My name is <strong>Oracle</strong>, and this journal
+                        is a place where I want to bring the human experience
+                        closer to the surface—not the polished version we
+                        present to the world, but the complicated, unfinished,
+                        honest version that lives underneath.
+                    </p>
+
+                    <p>
+                        I have come to believe that life teaches some of its
+                        deepest lessons in ways we would never have chosen.
+                        Sometimes the lesson arrives as disappointment.
+                        Sometimes it comes through a change we did not expect,
+                        a question that will not leave us alone, or a moment
+                        when the person we thought we were begins to change.
+                    </p>
+
+                    <p>
+                        And sometimes, the hardest part is not what happened.
+                        It is learning how to live with what happened without
+                        allowing it to become the only thing that defines us.
+                    </p>
+
+                    <div class="story-divider">✦</div>
+
+                    <p>
+                        I do not want this page to be a performance. I do not
+                        want to build a personality out of perfect sentences
+                        and pretend that beautiful words mean a person has
+                        mastered every difficult feeling.
+                    </p>
+
+                    <p>
+                        I want to write about life as it is experienced:
+                        confusing at times, beautiful at others, unfair
+                        sometimes, and full of moments that only make sense
+                        when we look back at them from a different place
+                        in our lives.
+                    </p>
+
+                    <p>
+                        <strong>
+                            This is not the story of someone who has
+                            everything figured out. It is the story of
+                            someone willing to keep asking, keep learning,
+                            and keep becoming.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PULL QUOTE
+        ========================================= -->
+
+        <section class="quote-section">
+
+            <div class="quote-inner reveal">
+
+                <div class="quote-mark">“</div>
+
+                <blockquote>
+                    Sometimes we spend so much of our lives trying to be
+                    understood by others that we forget to
+                    <em>understand ourselves.</em>
+                </blockquote>
+
+                <div class="quote-credit">
+                    A thought from The Insight Journal
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CHAPTER TWO
+        ========================================= -->
+
+        <section class="hidden-section">
+
+            <div class="container">
+
+                <div class="center-heading reveal">
+
+                    <div class="chapter-label" style="justify-content: center;">
+                        <span class="chapter-number">02</span>
+                        The chapters we hide
+                    </div>
+
+                    <h2 class="section-heading">
+                        There is a life behind every <em class="gold">face.</em>
+                    </h2>
+
+                    <p class="section-description">
+                        We become very good at showing the world the version
+                        of ourselves it finds easiest to understand. But
+                        behind that version, there are often feelings that
+                        deserve patience, honesty, and a little compassion.
+                    </p>
+
+                </div>
+
+
+                <div class="hidden-grid">
+
+                    <article class="hidden-card reveal">
+
+                        <span class="card-number">Chapter 01</span>
+
+                        <h3>The things we never say</h3>
+
+                        <p>
+                            The words we rehearse but never speak. The
+                            apologies we wish we had received. The questions
+                            we carry because we are afraid that asking them
+                            might change everything.
+                        </p>
+
+                    </article>
+
+
+                    <article class="hidden-card reveal">
+
+                        <span class="card-number">Chapter 02</span>
+
+                        <h3>The weight of being strong</h3>
+
+                        <p>
+                            There are times when everyone expects us to keep
+                            going, and we become so accustomed to holding
+                            everything together that we forget we are
+                            allowed to need support, too.
+                        </p>
+
+                    </article>
+
+
+                    <article class="hidden-card reveal">
+
+                        <span class="card-number">Chapter 03</span>
+
+                        <h3>The person we are becoming</h3>
+
+                        <p>
+                            Growth is not always a dramatic transformation.
+                            Sometimes it is a quiet decision to respond
+                            differently, choose more carefully, forgive
+                            ourselves, or begin again.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CHAPTER THREE
+        ========================================= -->
+
+        <section class="lessons-section">
+
+            <div class="container lessons-grid">
+
+                <div class="lessons-intro reveal">
+
+                    <div class="chapter-label">
+                        <span class="chapter-number">03</span>
+                        Notes from the journey
+                    </div>
+
+                    <h2 class="section-heading">
+                        The lessons I am still <em class="gold">learning.</em>
+                    </h2>
+
+                    <p class="section-description">
+                        I do not believe that every painful experience needs
+                        to be romanticised or explained away as destiny.
+                        Some things hurt. Some things take time to understand.
+                        Some things simply should never have happened.
+                    </p>
+
+                    <p class="section-description" style="margin-top: 18px;">
+                        But even when we cannot change the past, we can
+                        gradually change the relationship we have with it.
+                        We can decide what we carry forward, what we release,
+                        and what we refuse to let define the rest of our lives.
+                    </p>
+
+                </div>
+
+
+                <div class="lesson-list reveal">
+
+                    <article class="lesson-item">
+
+                        <div class="lesson-index">01.</div>
+
+                        <div>
+                            <h3>Not every question needs an immediate answer.</h3>
+
+                            <p>
+                                Sometimes clarity comes after we stop forcing
+                                ourselves to understand everything at once.
+                                We are allowed to take our time.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lesson-item">
+
+                        <div class="lesson-index">02.</div>
+
+                        <div>
+                            <h3>Our worth is not decided by another person's choices.</h3>
+
+                            <p>
+                                The way someone treats us can affect how we
+                                feel, but it does not have to determine how
+                                we see ourselves forever.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lesson-item">
+
+                        <div class="lesson-index">03.</div>
+
+                        <div>
+                            <h3>Healing is not a competition.</h3>
+
+                            <p>
+                                We do not all move forward at the same pace.
+                                Progress can be quiet, uneven, and difficult
+                                to recognise while it is happening.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lesson-item">
+
+                        <div class="lesson-index">04.</div>
+
+                        <div>
+                            <h3>Boundaries can be an act of self-respect.</h3>
+
+                            <p>
+                                We can care about people without abandoning
+                                ourselves to keep them comfortable. A kind
+                                heart still needs room to breathe.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lesson-item">
+
+                        <div class="lesson-index">05.</div>
+
+                        <div>
+                            <h3>Beginning again is not the same as starting from nothing.</h3>
+
+                            <p>
+                                We carry our experiences, our lessons, and
+                                our new understanding with us. A new beginning
+                                can be built from what the old one taught us.
+                            </p>
+                        </div>
+
+                    </article>
+
+
+                    <article class="lesson-item">
+
+                        <div class="lesson-index">06.</div>
+
+                        <div>
+                            <h3>We deserve the compassion we offer others.</h3>
+
+                            <p>
+                                It is easy to comfort someone we love and
+                                difficult to speak gently to ourselves.
+                                Perhaps learning to do both is part of growing.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CHAPTER FOUR — LETTER
+        ========================================= -->
+
+        <section class="letter-section" id="letter">
+
+            <div class="container letter-layout">
+
+                <div class="letter-heading reveal">
+
+                    <div class="chapter-label">
+                        <span class="chapter-number">04</span>
+                        An open letter
+                    </div>
+
+                    <h2 class="section-heading">
+                        To the person reading this in <em class="gold">silence.</em>
+                    </h2>
+
+                    <p class="section-description" style="margin-top: 23px;">
+                        Perhaps you found this page by accident.
+                        Perhaps something in your life led you here.
+                        Whatever brought you, I hope you find a moment
+                        to breathe.
+                    </p>
+
+                </div>
+
+
+                <article class="letter-paper reveal">
+
+                    <div class="letter-label">
+                        The Insight Journal · A personal letter
+                    </div>
+
+                    <h3>Dear stranger,</h3>
+
+                    <div class="letter-body">
+
+                        <p>
+                            I do not know your name. I do not know what your
+                            days have been like, what you have been trying
+                            to overcome, or how many times you have told
+                            someone that you are fine when the truth was
+                            much more complicated.
+                        </p>
+
+                        <p>
+                            But I know this: you are a human being, and you
+                            do not have to turn every difficult feeling into
+                            a private battle that nobody is allowed to see.
+                        </p>
+
+                        <p>
+                            You do not have to earn rest by exhausting
+                            yourself. You do not have to prove your value
+                            by being useful to everyone. And you do not
+                            have to have a complete plan for your life
+                            before you are allowed to take the next step.
+                        </p>
+
+                        <p>
+                            If someone hurt you, I hope you eventually find
+                            a way to move forward that does not require
+                            pretending the hurt never happened.
+                        </p>
+
+                        <p>
+                            If you made mistakes, I hope you learn from
+                            them without sentencing yourself to a lifetime
+                            of shame.
+                        </p>
+
+                        <p>
+                            If you feel behind in life, I hope you remember
+                            that you are living a life, not competing in
+                            someone else's race.
+                        </p>
+
+                        <p>
+                            And if you are still trying to discover who
+                            you are, please be patient with the person
+                            you are becoming.
+                        </p>
+
+                        <p>
+                            You are allowed to change your mind. You are
+                            allowed to outgrow old versions of yourself.
+                            You are allowed to ask for help. You are
+                            allowed to begin again.
+                        </p>
+
+                        <p>
+                            I created this space because I believe our
+                            experiences deserve more than hurried
+                            explanations and empty encouragement.
+                            They deserve reflection. They deserve
+                            honesty. They deserve the time it takes
+                            to understand them.
+                        </p>
+
+                        <p>
+                            I cannot promise that every page here will
+                            give you an answer. But I hope some pages
+                            help you ask better questions, find words
+                            for feelings you have struggled to explain,
+                            or realise that you are not the only person
+                            trying to make sense of being human.
+                        </p>
+
+                        <p>
+                            So, wherever you are in your story, take
+                            a breath. You do not have to solve your
+                            whole life tonight.
+                        </p>
+
+                        <p>
+                            Start with the truth you can admit to
+                            yourself. Start with the feeling you have
+                            been avoiding. Start with one small,
+                            honest step.
+                        </p>
+
+                        <p>
+                            And remember: <strong>your story is still
+                            being written.</strong>
+                        </p>
+
+                    </div>
+
+                    <div class="letter-signoff">
+                        With honesty and hope,
+                    </div>
+
+                    <div class="letter-signoff" style="margin-top: 4px;">
+                        Oracle.
+                    </div>
+
+                    <div class="letter-small">
+                        The Insight Journal
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             REFLECTION ROOM
+        ========================================= -->
+
+        <section class="reflection-section">
+
+            <div class="container">
+
+                <div class="reflection-inner reveal">
+
+                    <div class="eyebrow">A quiet moment with yourself</div>
+
+                    <h2 class="section-heading">
+                        Before you leave, sit with <em class="gold">yourself.</em>
+                    </h2>
+
+                    <p>
+                        You have spent a few moments reading my thoughts.
+                        Now, if you are comfortable, give yourself a few
+                        moments of your own. You do not need to share
+                        your answers with anyone.
+                    </p>
+
+
+                    <div class="reflection-prompts">
+
+                        <div class="reflection-prompt">
+                            <span>Ask yourself · 01</span>
+                            <p>What have I been feeling that I have not allowed myself to acknowledge?</p>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <span>Ask yourself · 02</span>
+                            <p>What am I still carrying that I may need help learning to put down?</p>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <span>Ask yourself · 03</span>
+                            <p>What would I say to someone I love who was experiencing what I am experiencing?</p>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <span>Ask yourself · 04</span>
+                            <p>What is one small thing I can do to take better care of myself this week?</p>
+                        </div>
+
+                    </div>
+
+                    <p class="reflection-note">
+                        There is no perfect answer. Take what feels useful,
+                        leave what does not, and give yourself permission
+                        to reflect at your own pace.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FINAL INVITATION
+        ========================================= -->
+
+        <section class="invitation-section">
+
+            <div class="container">
+
+                <div class="invitation-inner reveal">
+
+                    <div class="eyebrow">The next chapter begins here</div>
+
+                    <h2 class="section-heading">
+                        My story brought you here.
+                        <em class="gold">Where will yours take you?</em>
+                    </h2>
+
+                    <p>
+                        The Insight Journal is a growing collection of
+                        reflections on relationships, healing, personal
+                        growth, life lessons, and the experiences that
+                        shape who we become.
+                    </p>
+
+                    <p>
+                        Read a story. Sit with a thought. Share a page
+                        with someone who might need it. And when you are
+                        ready, return to your own story with a little
+                        more understanding.
+                    </p>
+
+                    <div class="invitation-actions">
+
+                        <a href="blog.html" class="button-primary">
+                            Explore the Journal ↗
+                        </a>
+
+                        <a href="categories.html" class="button-outline">
+                            Browse All Categories
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-top">
+
+                <div class="footer-brand">
+
+                    <a href="../index.html" class="brand">
+
+                        <div class="brand-mark">I.</div>
+
+                        <div>
+                            <div class="brand-name">The Insight Journal</div>
+                            <span class="brand-caption">Stories that stay with you</span>
+                        </div>
+
+                    </a>
+
+                    <p>
+                        A space for honest reflections, meaningful stories,
+                        personal growth, and the difficult but beautiful
+                        work of understanding ourselves.
+                    </p>
+
+                </div>
+
+
+                <nav class="footer-links" aria-label="Footer navigation">
+
+                    <a href="index.html">Home</a>
+
+                    <a href="blog.html">Journal</a>
+
+                    <a href="categories.html">Categories</a>
+
+                    <a href="about.html">About Oracle</a>
+
+                    <a href="contact.html">Contact</a>
+
+                    <a href="privacy-policy.html">Privacy Policy</a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span> The Insight Journal.
+                    Written with intention.
+                </p>
+
+                <p class="footer-note">
+                    This journal offers personal reflections and general
+                    emotional-wellbeing content. It is not a substitute
+                    for professional mental-health care or therapy.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /* =========================================
+           MOBILE NAVIGATION
+        ========================================= */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        function closeMenu() {
+            navLinks.classList.remove("open");
+            document.body.classList.remove("menu-open");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+            menuToggle.textContent = "☰";
+        }
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = navLinks.classList.toggle("open");
+
+            document.body.classList.toggle("menu-open", isOpen);
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", closeMenu);
+
+        });
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+
+        });
+
+
+        /* =========================================
+           READING PROGRESS
+        ========================================= */
+
+        const readingProgress = document.getElementById("readingProgress");
+
+        function updateReadingProgress() {
+
+            const scrollableHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+
+            const progress =
+                scrollableHeight > 0
+                    ? (window.scrollY / scrollableHeight) * 100
+                    : 0;
+
+            readingProgress.style.width = `${progress}%`;
+
+        }
+
+        window.addEventListener("scroll", updateReadingProgress, {
+            passive: true
+        });
+
+        window.addEventListener("resize", updateReadingProgress);
+
+        updateReadingProgress();
+
+
+        /* =========================================
+           SCROLL REVEAL ANIMATIONS
+        ========================================= */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        if ("IntersectionObserver" in window && !reducedMotion) {
+
+            const revealObserver = new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -35px 0px"
+                }
+            );
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+
+        } else {
+
+            revealElements.forEach(element => {
+                element.classList.add("visible");
+            });
+
+        }
+
+
+        /* =========================================
+           FOOTER YEAR
+        ========================================= */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>

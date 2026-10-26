@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore thoughtful articles on technology, business, education, lifestyle, and culture at The Insight Journal."
+    >
+
+    <meta name="theme-color" content="#101820">
+
+    <title>Explore Articles | The Insight Journal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* ======================================
+           1. GLOBAL DESIGN SYSTEM
+        ====================================== */
+
+        :root {
+            --primary: #101820;
+            --primary-light: #1c2934;
+            --accent: #d6aa65;
+            --accent-dark: #b88943;
+            --background: #f7f7f4;
+            --surface: #ffffff;
+            --text: #20262c;
+            --muted: #707780;
+            --border: #e6e6e1;
+
+            --heading-font: "Playfair Display", Georgia, serif;
+            --body-font: "DM Sans", Arial, sans-serif;
+
+            --container: 1180px;
+            --radius: 8px;
+            --transition: 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: min(var(--container), 90%);
+            margin-inline: auto;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--accent-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            color: var(--primary);
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* ======================================
+           2. ANNOUNCEMENT
+        ====================================== */
+
+        .announcement {
+            background: var(--primary);
+            color: #e7e9eb;
+            padding: 9px 15px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        .announcement strong {
+            color: var(--accent);
+            margin-right: 6px;
+        }
+
+        /* ======================================
+           3. NAVIGATION
+        ====================================== */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .navbar {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            background: var(--primary);
+            color: var(--accent);
+            border-radius: 4px;
+            font-family: var(--heading-font);
+            font-size: 1.45rem;
+            font-weight: 800;
+        }
+
+        .brand-name {
+            display: block;
+            color: var(--primary);
+            font-family: var(--heading-font);
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .brand-tagline {
+            display: block;
+            color: var(--muted);
+            font-size: 0.62rem;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            color: #454b51;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-dark);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .subscribe-link {
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .subscribe-link:hover {
+            background: var(--primary-light);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        /* ======================================
+           4. BLOG INTRODUCTION
+        ====================================== */
+
+        .blog-intro {
+            padding: 78px 0 50px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 28px;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-dark);
+        }
+
+        .breadcrumb span {
+            color: #a5a9ad;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: end;
+            gap: 50px;
+        }
+
+        .intro-title {
+            max-width: 720px;
+            font-family: var(--heading-font);
+            color: var(--primary);
+            font-size: clamp(2.8rem, 6vw, 4.6rem);
+            line-height: 1.08;
+            letter-spacing: -1.3px;
+        }
+
+        .intro-title em {
+            color: var(--accent-dark);
+            font-weight: 500;
+        }
+
+        .intro-description {
+            max-width: 570px;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .intro-note {
+            padding: 22px 24px;
+            background: var(--background);
+            border-left: 3px solid var(--accent);
+        }
+
+        .intro-note strong {
+            display: block;
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 7px;
+        }
+
+        .intro-note p {
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        /* ======================================
+           5. FEATURED STORY
+        ====================================== */
+
+        .featured-section {
+            padding: 65px 0 40px;
+        }
+
+        .featured-story {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .featured-image-link {
+            min-height: 430px;
+            overflow: hidden;
+            background: #dedbd4;
+        }
+
+        .featured-image {
+            height: 100%;
+            min-height: 430px;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-image-link:hover .featured-image {
+            transform: scale(1.04);
+        }
+
+        .featured-content {
+            padding: clamp(25px, 4vw, 48px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .featured-label {
+            color: var(--accent-dark);
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .featured-content h2 {
+            margin: 17px 0;
+            color: var(--primary);
+            font-family: var(--heading-font);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            line-height: 1.2;
+        }
+
+        .featured-content > p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+
+        .meta-dot {
+            width: 4px;
+            height: 4px;
+            background: #a4a8aa;
+            border-radius: 50%;
+        }
+
+        .featured-content .article-meta {
+            margin-top: 22px;
+            margin-bottom: 24px;
+        }
+
+        /* ======================================
+           6. ARTICLE TOOLBAR
+        ====================================== */
+
+        .articles-section {
+            padding: 55px 0 90px;
+        }
+
+        .articles-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .articles-heading p {
+            max-width: 520px;
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .article-count {
+            color: var(--muted);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 8px 13px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: #555d65;
+            font-size: 0.76rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 7px;
+            min-width: 270px;
+        }
+
+        .search-form input {
+            width: 100%;
+            min-width: 0;
+            padding: 10px 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            outline: none;
+            font-size: 0.8rem;
+        }
+
+        .search-form input:focus {
+            border-color: var(--accent-dark);
+        }
+
+        .search-form button {
+            padding: 0 14px;
+            background: var(--primary);
+            border: 0;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        /* ======================================
+           7. ARTICLE CARDS
+        ====================================== */
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 27px;
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform var(--transition),
+                        box-shadow var(--transition);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(16, 24, 32, 0.08);
+        }
+
+        .article-card[hidden] {
+            display: none;
+        }
+
+        .article-image-link {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            background: #e3e2de;
+        }
+
+        .article-image {
+            height: 230px;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.04);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 10px;
+            background: white;
+            color: var(--primary);
+            border-radius: 3px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 23px;
+        }
+
+        .article-content h3 {
+            margin: 13px 0 12px;
+            color: var(--primary);
+            font-family: var(--heading-font);
+            font-size: 1.42rem;
+            line-height: 1.35;
+        }
+
+        .article-content h3 a:hover {
+            color: var(--accent-dark);
+        }
+
+        .article-content > p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .article-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+            padding-top: 18px;
+            margin-top: auto;
+            padding-bottom: 0;
+        }
+
+        .read-link {
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .read-link span {
+            display: inline-block;
+            transition: transform var(--transition);
+        }
+
+        .read-link:hover span {
+            transform: translateX(4px);
+        }
+
+        .reading-time {
+            color: var(--muted);
+            font-size: 0.73rem;
+            white-space: nowrap;
+        }
+
+        .empty-state {
+            display: none;
+            padding: 50px 20px;
+            background: white;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .empty-state.visible {
+            display: block;
+        }
+
+        .empty-state h3 {
+            font-family: var(--heading-font);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .empty-state p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 0.87rem;
+        }
+
+        .reset-search {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: 0;
+            border-radius: 4px;
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ======================================
+           8. NEWSLETTER CALLOUT
+        ====================================== */
+
+        .newsletter-section {
+            padding: 70px 0;
+            background: #eee9df;
+        }
+
+        .newsletter-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+        }
+
+        .newsletter-copy {
+            max-width: 620px;
+        }
+
+        .newsletter-copy h2 {
+            font-family: var(--heading-font);
+            color: var(--primary);
+            font-size: clamp(1.9rem, 4vw, 2.7rem);
+            line-height: 1.2;
+        }
+
+        .newsletter-copy p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ======================================
+           9. FOOTER
+        ====================================== */
+
+        .footer {
+            padding: 55px 0 0;
+            background: #0b1218;
+            color: #d8dce0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr 0.8fr 0.8fr;
+            gap: 40px;
+            padding-bottom: 45px;
+        }
+
+        .footer .brand-name {
+            color: white;
+        }
+
+        .footer .brand-tagline {
+            color: #a5afb7;
+        }
+
+        .footer .brand-mark {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .footer-description {
+            max-width: 300px;
+            margin-top: 17px;
+            color: #aab3ba;
+            font-size: 0.82rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 18px;
+            color: white;
+            font-size: 0.86rem;
+        }
+
+        .footer-column ul {
+            display: grid;
+            gap: 11px;
+        }
+
+        .footer-column a {
+            color: #aab3ba;
+            font-size: 0.8rem;
+            transition: color var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            border-top: 1px solid #27323a;
+            color: #98a3ab;
+            font-size: 0.73rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        /* ======================================
+           10. RESPONSIVE LAYOUT
+        ====================================== */
+
+        @media (max-width: 1050px) {
+            .nav-links {
+                gap: 17px;
+            }
+
+            .intro-grid {
+                gap: 30px;
+            }
+
+            .toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .search-form {
+                width: 100%;
+            }
+
+            .article-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 780px) {
+            .navbar {
+                min-height: 72px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .subscribe-link {
+                display: none;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                height: calc(100dvh - 72px);
+                padding: 25px 5%;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                background: white;
+                overflow-y: auto;
+                visibility: hidden;
+                transform: translateX(100%);
+                transition: transform 0.3s ease, visibility 0.3s ease;
+            }
+
+            .nav-links.open {
+                visibility: visible;
+                transform: translateX(0);
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 17px 0;
+                font-size: 1rem;
+            }
+
+            .blog-intro {
+                padding: 50px 0 40px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .intro-title {
+                font-size: clamp(2.8rem, 9vw, 4rem);
+            }
+
+            .featured-story {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image-link,
+            .featured-image {
+                height: 340px;
+                min-height: 340px;
+            }
+
+            .featured-content {
+                padding: 30px;
+            }
+
+            .articles-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .newsletter-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                width: 91%;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .brand-mark {
+                width: 37px;
+                height: 37px;
+                font-size: 1.3rem;
+            }
+
+            .brand-name {
+                font-size: 0.96rem;
+            }
+
+            .brand-tagline {
+                font-size: 0.56rem;
+            }
+
+            .blog-intro {
+                padding-top: 38px;
+            }
+
+            .intro-title {
+                font-size: 2.7rem;
+                letter-spacing: -0.7px;
+            }
+
+            .intro-description {
+                font-size: 0.9rem;
+            }
+
+            .featured-image-link,
+            .featured-image {
+                height: 250px;
+                min-height: 250px;
+            }
+
+            .featured-content {
+                padding: 23px;
+            }
+
+            .featured-content h2 {
+                font-size: 1.85rem;
+            }
+
+            .filters {
+                gap: 7px;
+            }
+
+            .filter-btn {
+                padding: 8px 10px;
+                font-size: 0.72rem;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-image {
+                height: 240px;
+            }
+
+            .newsletter-section {
+                padding: 55px 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 32px 20px;
+            }
+
+            .footer-brand-column {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement">
+        <strong>THE INSIGHT JOURNAL</strong>
+        Ideas that inform, inspire, and move you forward.
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="container navbar">
+
+            <a href="index.html" class="brand" aria-label="Homepage">
+
+                <span class="brand-mark">I.</span>
+
+                <span>
+                    <span class="brand-name">The Insight Journal</span>
+                    <span class="brand-tagline">IDEAS THAT MOVE YOU FORWARD</span>
+                </span>
+
+            </a>
+
+            <nav aria-label="Main navigation">
+
+                <ul class="nav-links" id="navLinks">
+
+                    <li>
+                    </li>
+
+                    <li>
+                    </li>
+
+                    <li>
+                        <a href="categories.html">Categories</a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <a class="subscribe-link" href="newsletter.html">
+                    Subscribe
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navLinks"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+
+        <section class="blog-intro">
+
+            <div class="container">
+
+                <div class="breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <span>Blog</span>
+                </div>
+
+                <div class="intro-grid">
+
+                    <div>
+
+                        <span class="eyebrow">The Journal</span>
+
+                        <h1 class="intro-title">
+                            Words that matter.
+                            <em>Ideas that stay.</em>
+                        </h1>
+
+                        <p class="intro-description">
+                            Welcome to a collection of stories, perspectives,
+                            and practical knowledge for curious minds.
+                            Explore the ideas shaping our world, challenge
+                            what you think you know, and discover something
+                            worth carrying with you.
+                        </p>
+
+                    </div>
+
+                    <aside class="intro-note">
+
+                        <strong>A little curiosity goes a long way.</strong>
+
+                        <p>
+                            Whether you want to understand emerging technology,
+                            grow as a professional, learn something new, or
+                            reflect on life, there is a story here for you.
+                        </p>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED ARTICLE -->
+
+        <section class="featured-section">
+
+            <div class="container">
+
+                <article class="featured-story">
+
+                    <a
+                        class="featured-image-link"
+                        href="article.html?slug=understanding-a-changing-world"
+                    >
+
+                        <img
+                            class="featured-image"
+                            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85"
+                            alt="Technology components representing innovation and discovery"
+                            fetchpriority="high"
+                        >
+
+                    </a>
+
+                    <div class="featured-content">
+
+                        <span class="featured-label">
+                            Featured perspective
+                        </span>
+
+                        <h2>
+                            <a href="article.html?slug=understanding-a-changing-world">
+                                Understanding a Changing World Without Losing Sight of What Matters
+                            </a>
+                        </h2>
+
+                        <p>
+                            The world moves quickly, bringing new opportunities,
+                            difficult questions, and constant change. Learn why
+                            thoughtful reflection and a willingness to keep
+                            learning remain valuable in every generation.
+                        </p>
+
+                        <div class="article-meta">
+                            <span>Editorial Team</span>
+                            <span class="meta-dot"></span>
+                            <span>October 12, 2026</span>
+                            <span class="meta-dot"></span>
+                            <span>8 min read</span>
+                        </div>
+
+                        <a
+                            href="article.html?slug=understanding-a-changing-world"
+                            class="btn btn-primary"
+                        >
+                            Read Featured Story <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ARTICLE LIBRARY -->
+
+        <section class="articles-section" id="articles">
+
+            <div class="container">
+
+                <div class="articles-heading">
+
+                    <div>
+                        <span class="eyebrow">Explore the collection</span>
+
+                        <h2 class="section-title">
+                            Find something meaningful.
+                        </h2>
+
+                        <p>
+                            Browse our latest articles by subject or search
+                            for a topic that interests you.
+                        </p>
+                    </div>
+
+                    <span class="article-count" id="articleCount">
+                        9 articles
+                    </span>
+
+                </div>
+
+
+                <!-- FILTERS AND SEARCH -->
+
+                <div class="toolbar">
+
+                    <div class="filters" aria-label="Filter articles">
+
+                        <button
+                            class="filter-btn active"
+                            type="button"
+                            data-filter="all"
+                            aria-pressed="true"
+                        >
+                            All Stories
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="technology"
+                            aria-pressed="false"
+                        >
+                            Technology
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="business"
+                            aria-pressed="false"
+                        >
+                            Business
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="education"
+                            aria-pressed="false"
+                        >
+                            Education
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="lifestyle"
+                            aria-pressed="false"
+                        >
+                            Lifestyle
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            type="button"
+                            data-filter="culture"
+                            aria-pressed="false"
+                        >
+                            Culture
+                        </button>
+
+                    </div>
+
+
+                    <form class="search-form" id="searchForm" role="search">
+
+                        <input
+                            type="search"
+                            id="articleSearch"
+                            placeholder="Search articles..."
+                            aria-label="Search articles"
+                        >
+
+                        <button type="submit">Search</button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ARTICLE CARDS -->
+
+                <div class="article-grid" id="articleGrid">
+
+                    <!-- ARTICLE 1 -->
+
+                    <article class="article-card" data-category="technology">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=artificial-intelligence-explained"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=850&q=85"
+                                alt="Abstract artificial intelligence concept"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Technology</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>October 10, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>7 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=artificial-intelligence-explained">
+                                    Artificial Intelligence: What Everyone Should Understand
+                                </a>
+                            </h3>
+
+                            <p>
+                                Understand the fundamentals of AI, its everyday
+                                applications, its limitations, and the questions
+                                it raises for our future.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=artificial-intelligence-explained"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">7 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 2 -->
+
+                    <article class="article-card" data-category="business">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=habits-of-effective-leaders"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=850&q=85"
+                                alt="Colleagues discussing ideas at work"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Business</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>October 8, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>6 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=habits-of-effective-leaders">
+                                    The Everyday Habits of Effective Leaders
+                                </a>
+                            </h3>
+
+                            <p>
+                                Discover how communication, consistency, and
+                                thoughtful decisions can strengthen leadership
+                                over time.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=habits-of-effective-leaders"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">6 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 3 -->
+
+                    <article class="article-card" data-category="education">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=lifelong-learning"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=850&q=85"
+                                alt="Books and notebooks on a study desk"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Education</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>October 6, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>5 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=lifelong-learning">
+                                    How to Become a More Effective Lifelong Learner
+                                </a>
+                            </h3>
+
+                            <p>
+                                Develop stronger learning habits and turn
+                                curiosity into knowledge that stays with you.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=lifelong-learning"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">5 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 4 -->
+
+                    <article class="article-card" data-category="lifestyle">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=building-a-meaningful-routine"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=850&q=85"
+                                alt="A peaceful outdoor environment"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Lifestyle</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>October 4, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>4 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=building-a-meaningful-routine">
+                                    Building a Daily Routine That Works for You
+                                </a>
+                            </h3>
+
+                            <p>
+                                Create realistic habits that support your
+                                ambitions without making life unnecessarily rigid.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=building-a-meaningful-routine"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">4 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 5 -->
+
+                    <article class="article-card" data-category="culture">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=stories-that-connect-us"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=850&q=85"
+                                alt="People sharing a moment in a community"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Culture</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>October 2, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>6 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=stories-that-connect-us">
+                                    The Stories and Traditions That Connect Us
+                                </a>
+                            </h3>
+
+                            <p>
+                                Explore how shared experiences, traditions,
+                                and stories shape the identities of communities.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=stories-that-connect-us"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">6 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 6 -->
+
+                    <article class="article-card" data-category="technology">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=protecting-your-digital-life"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=850&q=85"
+                                alt="A laptop used for digital work"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Technology</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>September 29, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>5 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=protecting-your-digital-life">
+                                    Simple Ways to Protect Your Digital Life
+                                </a>
+                            </h3>
+
+                            <p>
+                                Build safer online habits through stronger
+                                passwords, careful browsing, and better privacy practices.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=protecting-your-digital-life"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">5 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 7 -->
+
+                    <article class="article-card" data-category="business">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=starting-small-building-big"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=850&q=85"
+                                alt="Planning and working through business documents"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Business</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>September 26, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>6 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=starting-small-building-big">
+                                    Starting Small: Building Something That Lasts
+                                </a>
+                            </h3>
+
+                            <p>
+                                Learn why careful planning, patience, and
+                                steady progress can matter more than a dramatic beginning.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=starting-small-building-big"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">6 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 8 -->
+
+                    <article class="article-card" data-category="education">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=the-power-of-better-questions"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=850&q=85"
+                                alt="A student studying at a desk"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Education</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>September 23, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>5 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=the-power-of-better-questions">
+                                    The Power of Asking Better Questions
+                                </a>
+                            </h3>
+
+                            <p>
+                                Better questions can reveal assumptions,
+                                deepen understanding, and lead to more useful answers.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=the-power-of-better-questions"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">5 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ARTICLE 9 -->
+
+                    <article class="article-card" data-category="lifestyle">
+
+                        <a
+                            class="article-image-link"
+                            href="article.html?slug=learning-to-begin-again"
+                        >
+
+                            <img
+                                class="article-image"
+                                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=850&q=85"
+                                alt="Sunlight spreading across a peaceful landscape"
+                                loading="lazy"
+                            >
+
+                            <span class="category-badge">Lifestyle</span>
+
+                        </a>
+
+                        <div class="article-content">
+
+                            <div class="article-meta">
+                                <span>September 20, 2026</span>
+                                <span class="meta-dot"></span>
+                                <span>5 min read</span>
+                            </div>
+
+                            <h3>
+                                <a href="article.html?slug=learning-to-begin-again">
+                                    Learning to Begin Again When Life Changes
+                                </a>
+                            </h3>
+
+                            <p>
+                                Change can be uncomfortable, but new beginnings
+                                can also create space for reflection, growth, and possibility.
+                            </p>
+
+                            <div class="article-bottom">
+                                <a
+                                    href="article.html?slug=learning-to-begin-again"
+                                    class="read-link"
+                                >
+                                    Read Article <span>→</span>
+                                </a>
+
+                                <span class="reading-time">5 min</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- EMPTY SEARCH RESULTS -->
+
+                <div class="empty-state" id="emptyState">
+
+                    <h3>No stories found.</h3>
+
+                    <p>
+                        We couldn't find an article matching your search.
+                        Try another keyword or choose a different category.
+                    </p>
+
+                    <button
+                        class="reset-search"
+                        id="resetSearch"
+                        type="button"
+                    >
+                        Show All Articles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEWSLETTER CALLOUT -->
+
+        <section class="newsletter-section">
+
+            <div class="container newsletter-inner">
+
+                <div class="newsletter-copy">
+
+                    <span class="eyebrow">Stay curious</span>
+
+                    <h2>
+                        A little insight can change your perspective.
+                    </h2>
+
+                    <p>
+                        Join our newsletter for thoughtful stories, useful
+                        knowledge, and ideas worth exploring.
+                    </p>
+
+                </div>
+
+                <a href="newsletter.html" class="btn btn-primary">
+                    Explore the Newsletter <span>→</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand-column">
+
+                    <a href="../index.html" class="brand">
+
+                        <span class="brand-mark">I.</span>
+
+                        <span>
+                            <span class="brand-name">The Insight Journal</span>
+                            <span class="brand-tagline">IDEAS THAT MOVE YOU FORWARD</span>
+                        </span>
+
+                    </a>
+
+                    <p class="footer-description">
+                        Thoughtful stories, fresh perspectives, and practical
+                        knowledge for a world that never stops changing.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Explore</h3>
+
+                    <ul>
+                        <li><a href="blog.html">All Articles</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="../index.html#featured">Featured Stories</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>About</h3>
+
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Write for Us</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>Information</h3>
+
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="contact.html">Feedback</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; <span id="currentYear"></span>
+                    The Insight Journal. All rights reserved.
+                </p>
+
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        "use strict";
+
+        /* MOBILE NAVIGATION */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        function closeMenu() {
+            navLinks.classList.remove("open");
+            document.body.classList.remove("menu-open");
+
+            menuToggle.textContent = "☰";
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Open navigation menu");
+        }
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("open");
+
+            document.body.classList.toggle("menu-open", isOpen);
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+        });
+
+        navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 780) {
+                closeMenu();
+            }
+        });
+
+
+        /* ARTICLE FILTERING AND SEARCH */
+
+        const articleCards = [
+            ...document.querySelectorAll(".article-card")
+        ];
+
+        const filterButtons = [
+            ...document.querySelectorAll(".filter-btn")
+        ];
+
+        const searchForm = document.getElementById("searchForm");
+        const searchInput = document.getElementById("articleSearch");
+        const articleCount = document.getElementById("articleCount");
+        const emptyState = document.getElementById("emptyState");
+        const resetSearch = document.getElementById("resetSearch");
+
+        let activeCategory = "all";
+        let searchTerm = "";
+
+        function updateArticles() {
+            let visibleCount = 0;
+
+            articleCards.forEach((card) => {
+                const category = card.dataset.category;
+                const content = card.textContent.toLowerCase();
+
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    category === activeCategory;
+
+                const matchesSearch =
+                    searchTerm === "" ||
+                    content.includes(searchTerm);
+
+                const isVisible = matchesCategory && matchesSearch;
+
+                card.hidden = !isVisible;
+
+                if (isVisible) {
+                    visibleCount++;
+                }
+            });
+
+            articleCount.textContent =
+                `${visibleCount} ${visibleCount === 1 ? "article" : "articles"}`;
+
+            emptyState.classList.toggle(
+                "visible",
+                visibleCount === 0
+            );
+        }
+
+
+        /* CATEGORY BUTTONS */
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                activeCategory = button.dataset.filter;
+
+                filterButtons.forEach((item) => {
+                    const isActive = item === button;
+
+                    item.classList.toggle("active", isActive);
+
+                    item.setAttribute(
+                        "aria-pressed",
+                        String(isActive)
+                    );
+                });
+
+                updateArticles();
+            });
+        });
+
+
+        /* SEARCH FORM */
+
+        searchForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            searchTerm = searchInput.value.trim().toLowerCase();
+
+            updateArticles();
+
+            document.getElementById("articles").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+
+
+        /* RESET FILTERS */
+
+        resetSearch.addEventListener("click", () => {
+            activeCategory = "all";
+            searchTerm = "";
+
+            searchInput.value = "";
+
+            filterButtons.forEach((button) => {
+                const isActive = button.dataset.filter === "all";
+
+                button.classList.toggle("active", isActive);
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(isActive)
+                );
+            });
+
+            updateArticles();
+        });
+
+
+        /* FOOTER YEAR */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        /* KEYBOARD ACCESSIBILITY */
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+            }
+        });
+    </script>
+
+</body>
+</html>

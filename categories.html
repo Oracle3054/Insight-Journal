@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore The Insight Journal by category. Discover thoughtful stories about personal growth, relationships, healing, self-discovery, and life lessons."
+    >
+
+    <meta name="theme-color" content="#101820">
+
+    <title>Explore Categories | The Insight Journal</title>
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =========================================
+           1. DESIGN SYSTEM
+        ========================================= */
+
+        :root {
+            --background: #f8f7f4;
+            --surface: #ffffff;
+            --dark: #101820;
+            --dark-soft: #18232c;
+            --gold: #d6aa65;
+            --gold-dark: #b98b45;
+            --text: #252b31;
+            --muted: #777d83;
+            --border: #e9e5de;
+
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "DM Sans", Arial, sans-serif;
+
+            --container: 1180px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: var(--sans);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 4px;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .eyebrow {
+            color: var(--gold-dark);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+        }
+
+        .serif {
+            font-family: var(--serif);
+        }
+
+        /* =========================================
+           2. HEADER
+        ========================================= */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(16, 24, 32, 0.97);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .header-inner {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: inline-flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+            line-height: 1.2;
+        }
+
+        .brand-name span {
+            color: var(--gold);
+        }
+
+        .brand-tagline {
+            margin-top: 4px;
+            color: #aeb7bf;
+            font-size: 0.61rem;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 29px;
+        }
+
+        .main-nav a {
+            color: #d0d5d9;
+            font-size: 0.85rem;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--gold);
+        }
+
+        .header-cta {
+            padding: 11px 17px;
+            border: 1px solid rgba(214, 170, 101, 0.6);
+            border-radius: 3px;
+            color: var(--gold) !important;
+            font-weight: 600;
+        }
+
+        .header-cta:hover {
+            background: var(--gold);
+            color: var(--dark) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid #39434b;
+            border-radius: 4px;
+            background: transparent;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        /* =========================================
+           3. HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 95px 0 88px;
+            background: var(--dark);
+            color: white;
+        }
+
+        .hero::before {
+            position: absolute;
+            top: -180px;
+            right: -100px;
+            width: 550px;
+            height: 550px;
+            border: 1px solid rgba(214, 170, 101, 0.12);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .hero::after {
+            position: absolute;
+            top: -100px;
+            right: -20px;
+            width: 390px;
+            height: 390px;
+            border: 1px solid rgba(214, 170, 101, 0.12);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero .eyebrow {
+            margin-bottom: 23px;
+        }
+
+        .hero h1 {
+            max-width: 780px;
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6.5vw, 5.5rem);
+            font-weight: 500;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-description {
+            max-width: 650px;
+            margin-top: 25px;
+            color: #c0c7cd;
+            font-size: 1.02rem;
+            line-height: 1.95;
+        }
+
+        .hero-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 24px;
+            margin-top: 33px;
+        }
+
+        .hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 20px;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 0.83rem;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .hero-link:hover {
+            background: #e5bd7c;
+        }
+
+        .hero-note {
+            color: #aeb7bf;
+            font-size: 0.8rem;
+        }
+
+        /* =========================================
+           4. BREADCRUMBS
+        ========================================= */
+
+        .breadcrumb-section {
+            padding-top: 24px;
+        }
+
+        .breadcrumbs {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.79rem;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--gold-dark);
+        }
+
+        .breadcrumb-separator {
+            color: #b6b0a6;
+        }
+
+        /* =========================================
+           5. FEATURED COLLECTION
+        ========================================= */
+
+        .featured-section {
+            padding: 75px 0 65px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            margin-top: 10px;
+            color: var(--dark);
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            letter-spacing: -0.8px;
+            line-height: 1.25;
+        }
+
+        .section-description {
+            max-width: 510px;
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 0.91rem;
+            line-height: 1.9;
+        }
+
+        .featured-collection {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            min-height: 390px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+        }
+
+        .featured-image {
+            min-height: 390px;
+            overflow: hidden;
+            background: #d9d4ca;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 390px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-collection:hover .featured-image img {
+            transform: scale(1.035);
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 45px;
+        }
+
+        .featured-content h3 {
+            margin-top: 17px;
+            color: var(--dark);
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.2vw, 3rem);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .featured-content p {
+            margin-top: 17px;
+            color: var(--muted);
+            font-size: 0.91rem;
+            line-height: 1.9;
+        }
+
+        .featured-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 0.74rem;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 27px;
+            color: var(--gold-dark);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .text-link span {
+            transition: transform 0.2s ease;
+        }
+
+        .text-link:hover span {
+            transform: translateX(4px);
+        }
+
+        /* =========================================
+           6. CATEGORY EXPLORER
+        ========================================= */
+
+        .categories-section {
+            padding: 78px 0 90px;
+            background: #f0ede7;
+        }
+
+        .category-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-button {
+            padding: 10px 15px;
+            border: 1px solid #ded9d0;
+            border-radius: 3px;
+            background: transparent;
+            color: #5d646a;
+            font-size: 0.77rem;
+            transition: 0.2s ease;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            border-color: var(--dark);
+            background: var(--dark);
+            color: white;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: min(100%, 290px);
+            min-height: 43px;
+            padding: 0 13px;
+            border: 1px solid #ded9d0;
+            border-radius: 3px;
+            background: white;
+        }
+
+        .search-box svg {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+            fill: none;
+            stroke: #777d83;
+            stroke-width: 1.8;
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--text);
+            font-size: 0.8rem;
+        }
+
+        .search-box input:focus-visible {
+            outline: none;
+        }
+
+        .search-box:focus-within {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        .category-count {
+            margin-bottom: 22px;
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .category-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: white;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px rgba(16, 24, 32, 0.08);
+        }
+
+        .category-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #dcd7ce;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.045);
+        }
+
+        .category-image::after {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(16, 24, 32, 0.35),
+                transparent 65%
+            );
+            content: "";
+            pointer-events: none;
+        }
+
+        .category-number {
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: var(--serif);
+            font-size: 2rem;
+        }
+
+        .category-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 24px;
+        }
+
+        .category-topline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .category-label {
+            color: var(--gold-dark);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .story-count {
+            color: var(--muted);
+            font-size: 0.69rem;
+        }
+
+        .category-content h3 {
+            margin-top: 12px;
+            color: var(--dark);
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .category-content p {
+            margin-top: 11px;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.85;
+        }
+
+        .category-content .text-link {
+            margin-top: auto;
+            padding-top: 21px;
+        }
+
+        .category-card[hidden] {
+            display: none;
+        }
+
+        .empty-state {
+            display: none;
+            padding: 55px 20px;
+            border: 1px dashed #d5cec2;
+            text-align: center;
+        }
+
+        .empty-state.show {
+            display: block;
+        }
+
+        .empty-state h3 {
+            color: var(--dark);
+            font-family: var(--serif);
+            font-size: 1.8rem;
+        }
+
+        .empty-state p {
+            margin-top: 9px;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        /* =========================================
+           7. EDITOR'S PICKS
+        ========================================= */
+
+        .editors-section {
+            padding: 85px 0;
+        }
+
+        .editors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .editor-card {
+            min-width: 0;
+        }
+
+        .editor-image {
+            display: block;
+            height: 230px;
+            overflow: hidden;
+            background: #dcd7ce;
+        }
+
+        .editor-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .editor-card:hover .editor-image img {
+            transform: scale(1.04);
+        }
+
+        .editor-content {
+            padding-top: 20px;
+        }
+
+        .editor-content h3 {
+            margin-top: 10px;
+            color: var(--dark);
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .editor-content p {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.85;
+        }
+
+        .editor-content .text-link {
+            margin-top: 15px;
+        }
+
+        /* =========================================
+           8. QUOTE SECTION
+        ========================================= */
+
+        .quote-section {
+            padding: 78px 24px;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+
+        .quote-inner {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .quote-mark {
+            color: var(--gold);
+            font-family: var(--serif);
+            font-size: 5rem;
+            line-height: 0.8;
+        }
+
+        .quote-section blockquote {
+            margin-top: 22px;
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 4vw, 3.1rem);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .quote-caption {
+            margin-top: 23px;
+            color: #b8c0c6;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           9. NEWSLETTER
+        ========================================= */
+
+        .newsletter-section {
+            padding: 85px 24px;
+            background: #f8f7f4;
+            text-align: center;
+        }
+
+        .newsletter-inner {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            margin-top: 13px;
+            color: var(--dark);
+            font-family: var(--serif);
+            font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+            font-weight: 600;
+            line-height: 1.25;
+        }
+
+        .newsletter-section p {
+            max-width: 580px;
+            margin: 17px auto 26px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.9;
+        }
+
+        .newsletter-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 13px 23px;
+            background: var(--dark);
+            color: white;
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .newsletter-button:hover {
+            background: #26343f;
+        }
+
+        /* =========================================
+           10. FOOTER
+        ========================================= */
+
+        .site-footer {
+            padding: 48px 0 25px;
+            background: #0b1117;
+            color: white;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 35px;
+            padding-bottom: 35px;
+        }
+
+        .footer-brand {
+            max-width: 380px;
+        }
+
+        .footer-brand p {
+            margin-top: 15px;
+            color: #9da7af;
+            font-size: 0.84rem;
+            line-height: 1.9;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 23px;
+        }
+
+        .footer-links a {
+            color: #c5cbd0;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            padding-top: 22px;
+            border-top: 1px solid #293139;
+            color: #929ca4;
+            font-size: 0.73rem;
+        }
+
+        /* =========================================
+           11. RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 1000px) {
+            .main-nav {
+                gap: 17px;
+            }
+
+            .featured-content {
+                padding: 32px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .editors-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .editor-card:last-child {
+                display: none;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .menu-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .main-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                display: none;
+                align-items: stretch;
+                gap: 0;
+                padding: 10px 24px 20px;
+                border-bottom: 1px solid #303a43;
+                background: var(--dark);
+            }
+
+            .main-nav.open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .main-nav a {
+                padding: 13px 0;
+                border-bottom: 1px solid #27313a;
+            }
+
+            .main-nav .header-cta {
+                margin-top: 12px;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 75px 0;
+            }
+
+            .featured-collection {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image,
+            .featured-image img {
+                min-height: 300px;
+                height: 330px;
+            }
+
+            .featured-content {
+                padding: 32px;
+            }
+
+            .category-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .editors-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: calc(100% - 36px);
+            }
+
+            .header-inner {
+                min-height: 73px;
+            }
+
+            .brand-name {
+                font-size: 1.32rem;
+            }
+
+            .brand-tagline {
+                font-size: 0.55rem;
+                letter-spacing: 1.3px;
+            }
+
+            .hero {
+                padding: 61px 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.8rem, 12vw, 4rem);
+                letter-spacing: -1.4px;
+            }
+
+            .hero-description {
+                font-size: 0.93rem;
+            }
+
+            .hero-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .featured-section,
+            .categories-section,
+            .editors-section {
+                padding-top: 58px;
+                padding-bottom: 60px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .featured-image,
+            .featured-image img {
+                height: 250px;
+                min-height: 250px;
+            }
+
+            .featured-content {
+                padding: 25px;
+            }
+
+            .featured-content h3 {
+                font-size: 2.1rem;
+            }
+
+            .filter-buttons {
+                gap: 7px;
+            }
+
+            .filter-button {
+                padding: 9px 11px;
+                font-size: 0.72rem;
+            }
+
+            .category-grid,
+            .editors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-image {
+                height: 230px;
+            }
+
+            .editor-card:last-child {
+                display: block;
+            }
+
+            .editor-image {
+                height: 240px;
+            }
+
+            .quote-section {
+                padding: 65px 20px;
+            }
+
+            .newsletter-section {
+                padding: 65px 20px;
+            }
+
+            .footer-links {
+                gap: 16px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+                <span class="brand-name">
+                    The Insight <span>Journal.</span>
+                </span>
+
+                <span class="brand-tagline">
+                    Stories that stay with you
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mainNav"
+            >
+                ☰
+            </button>
+
+            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+                <a href="blog.html">Journal</a>
+                <a href="categories.html" class="active" aria-current="page">
+                    Categories
+                </a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="newsletter.html" class="header-cta">
+                    Join the Journal
+                </a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             HERO
+        ========================================= -->
+
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div class="eyebrow">
+                    Find the stories that speak to you
+                </div>
+
+                <h1>
+                    Every life has a story.
+                    <span>Find yours here.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Explore ideas, experiences, and honest reflections
+                    about the things that make us human. Whether you are
+                    searching for clarity, inspiration, understanding,
+                    or simply a story that makes you feel less alone,
+                    there is a place for you here.
+                </p>
+
+                <div class="hero-bottom">
+
+                    <a href="#explore-categories" class="hero-link">
+                        Explore our categories <span>↓</span>
+                    </a>
+
+                    <span class="hero-note">
+                        Thoughtful reading. Meaningful perspectives.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             BREADCRUMBS
+        ========================================= -->
+
+        <div class="container breadcrumb-section">
+
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+
+                <a href="../index.html">Home</a>
+
+                <span class="breadcrumb-separator">/</span>
+
+                <span aria-current="page">Categories</span>
+
+            </nav>
+
+        </div>
+
+
+        <!-- =========================================
+             FEATURED COLLECTION
+        ========================================= -->
+
+        <section class="featured-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="eyebrow">A collection worth exploring</div>
+
+                        <h2>Begin with what matters to you.</h2>
+
+                        <p class="section-description">
+                            Some stories help us understand our past.
+                            Others challenge us to think differently about
+                            our future. Start with the subject that feels
+                            closest to where you are today.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <article class="featured-collection">
+
+                    <a
+                        href="category.html?slug=personal-growth"
+                        class="featured-image"
+                        aria-label="Explore the Personal Growth category"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85"
+                            alt="An expansive landscape beneath an open sky"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <div class="featured-content">
+
+                        <div class="eyebrow">Featured collection</div>
+
+                        <h3>
+                            Personal Growth:
+                            Becoming Who You Want to Be
+                        </h3>
+
+                        <p>
+                            Growth is rarely a straight line. It is found
+                            in the decisions we make, the mistakes we learn
+                            from, the boundaries we establish, and the
+                            courage to begin again.
+                        </p>
+
+                        <div class="featured-meta">
+                            <span>Reflection & Growth</span>
+                            <span>Explore practical perspectives</span>
+                        </div>
+
+                        <a
+                            href="category.html?slug=personal-growth"
+                            class="text-link"
+                        >
+                            Explore this collection <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CATEGORY DIRECTORY
+        ========================================= -->
+
+        <section
+            class="categories-section"
+            id="explore-categories"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <div class="eyebrow">The category directory</div>
+
+                        <h2>Explore the Journal</h2>
+
+                        <p class="section-description">
+                            Browse by topic or search for a subject.
+                            Every category is a doorway to ideas,
+                            experiences, and perspectives worth considering.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Filters and search -->
+
+                <div class="category-toolbar">
+
+                    <div
+                        class="filter-buttons"
+                        role="group"
+                        aria-label="Filter categories"
+                    >
+
+                        <button
+                            class="filter-button active"
+                            type="button"
+                            data-filter="all"
+                            aria-pressed="true"
+                        >
+                            All topics
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="growth"
+                            aria-pressed="false"
+                        >
+                            Growth
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="relationships"
+                            aria-pressed="false"
+                        >
+                            Relationships
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="wellbeing"
+                            aria-pressed="false"
+                        >
+                            Well-being
+                        </button>
+
+                        <button
+                            class="filter-button"
+                            type="button"
+                            data-filter="inspiration"
+                            aria-pressed="false"
+                        >
+                            Inspiration
+                        </button>
+
+                    </div>
+
+
+                    <label class="search-box">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                            <path d="m16 16 5 5"></path>
+                        </svg>
+
+                        <input
+                            type="search"
+                            id="categorySearch"
+                            placeholder="Search categories..."
+                            aria-label="Search categories"
+                            autocomplete="off"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <p class="category-count" id="categoryCount" aria-live="polite">
+                    Showing 9 categories
+                </p>
+
+
+                <!-- Category cards -->
+
+                <div class="category-grid" id="categoryGrid">
+
+
+                    <!-- 1. Personal Growth -->
+
+                    <article
+                        class="category-card"
+                        data-category="growth"
+                        data-search="personal growth self improvement habits goals discipline confidence"
+                    >
+
+                        <a
+                            href="category.html?slug=personal-growth"
+                            class="category-image"
+                            aria-label="Explore Personal Growth"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"
+                                alt="A wide landscape with mountains and open sky"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">01</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Growth</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Personal Growth</h3>
+
+                            <p>
+                                Explore self-improvement, better habits,
+                                personal discipline, confidence, and the
+                                small decisions that shape a meaningful life.
+                            </p>
+
+                            <a
+                                href="category.html?slug=personal-growth"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 2. Relationships -->
+
+                    <article
+                        class="category-card"
+                        data-category="relationships"
+                        data-search="relationships love friendship trust communication heartbreak family connection"
+                    >
+
+                        <a
+                            href="category.html?slug=relationships"
+                            class="category-image"
+                            aria-label="Explore Relationships"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=85"
+                                alt="Two people sharing a quiet moment together"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">02</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Connection</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Relationships</h3>
+
+                            <p>
+                                Thoughtful perspectives on love, friendship,
+                                trust, communication, heartbreak, and building
+                                healthier connections with other people.
+                            </p>
+
+                            <a
+                                href="category.html?slug=relationships"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 3. Healing -->
+
+                    <article
+                        class="category-card"
+                        data-category="wellbeing"
+                        data-search="healing emotional wellbeing recovery resilience grief difficult seasons peace"
+                    >
+
+                        <a
+                            href="category.html?slug=healing"
+                            class="category-image"
+                            aria-label="Explore Healing and Reflection"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85"
+                                alt="Gentle morning light over a peaceful landscape"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">03</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Well-being</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Healing & Reflection</h3>
+
+                            <p>
+                                Read about emotional recovery, difficult
+                                seasons, resilience, self-compassion, and
+                                making room for a healthier future.
+                            </p>
+
+                            <a
+                                href="category.html?slug=healing"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 4. Life Lessons -->
+
+                    <article
+                        class="category-card"
+                        data-category="growth"
+                        data-search="life lessons wisdom choices mistakes experiences decisions maturity"
+                    >
+
+                        <a
+                            href="category.html?slug=life-lessons"
+                            class="category-image"
+                            aria-label="Explore Life Lessons"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"
+                                alt="A winding path through a natural landscape"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">04</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Perspective</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Life Lessons</h3>
+
+                            <p>
+                                Discover perspectives on responsibility,
+                                difficult choices, mistakes, change, and
+                                the wisdom we gain through experience.
+                            </p>
+
+                            <a
+                                href="category.html?slug=life-lessons"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 5. Self-Discovery -->
+
+                    <article
+                        class="category-card"
+                        data-category="growth"
+                        data-search="self discovery identity purpose values authenticity understanding yourself"
+                    >
+
+                        <a
+                            href="category.html?slug=self-discovery"
+                            class="category-image"
+                            aria-label="Explore Self-Discovery"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"
+                                alt="An open landscape inviting quiet reflection"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">05</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Identity</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Self-Discovery</h3>
+
+                            <p>
+                                Understand your values, recognise your
+                                strengths, question old assumptions, and
+                                develop a clearer sense of who you are.
+                            </p>
+
+                            <a
+                                href="category.html?slug=self-discovery"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 6. Motivation -->
+
+                    <article
+                        class="category-card"
+                        data-category="inspiration"
+                        data-search="motivation inspiration perseverance ambition courage discipline goals success"
+                    >
+
+                        <a
+                            href="category.html?slug=motivation"
+                            class="category-image"
+                            aria-label="Explore Motivation and Inspiration"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85"
+                                alt="A vast landscape beneath a bright open sky"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">06</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Inspiration</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Motivation</h3>
+
+                            <p>
+                                Find ideas that encourage perseverance,
+                                purposeful action, ambition, consistency,
+                                and the courage to keep moving forward.
+                            </p>
+
+                            <a
+                                href="category.html?slug=motivation"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 7. Career and Purpose -->
+
+                    <article
+                        class="category-card"
+                        data-category="inspiration"
+                        data-search="career purpose work business ambition professional development future direction"
+                    >
+
+                        <a
+                            href="category.html?slug=career-purpose"
+                            class="category-image"
+                            aria-label="Explore Career and Purpose"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85"
+                                alt="A modern workspace with natural light"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">07</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Direction</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Career & Purpose</h3>
+
+                            <p>
+                                Explore work, professional development,
+                                ambition, entrepreneurship, and finding
+                                direction in your personal and working life.
+                            </p>
+
+                            <a
+                                href="category.html?slug=career-purpose"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 8. Mindfulness -->
+
+                    <article
+                        class="category-card"
+                        data-category="wellbeing"
+                        data-search="mindfulness calm peace reflection presence gratitude balance rest"
+                    >
+
+                        <a
+                            href="category.html?slug=mindfulness"
+                            class="category-image"
+                            aria-label="Explore Mindfulness and Well-being"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85"
+                                alt="A peaceful scene in the early morning"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">08</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Balance</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Mindfulness & Well-being</h3>
+
+                            <p>
+                                Make space for reflection, gratitude,
+                                rest, emotional balance, and a more
+                                intentional approach to everyday life.
+                            </p>
+
+                            <a
+                                href="category.html?slug=mindfulness"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 9. Stories and Experiences -->
+
+                    <article
+                        class="category-card"
+                        data-category="relationships"
+                        data-search="personal stories real experiences life journeys memories heartbreak lessons human stories"
+                    >
+
+                        <a
+                            href="category.html?slug=personal-stories"
+                            class="category-image"
+                            aria-label="Explore Personal Stories"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=85"
+                                alt="A thoughtful portrait in soft natural light"
+                                loading="lazy"
+                            >
+
+                            <span class="category-number">09</span>
+                        </a>
+
+                        <div class="category-content">
+
+                            <div class="category-topline">
+                                <span class="category-label">Real Experiences</span>
+                                <span class="story-count">Explore stories</span>
+                            </div>
+
+                            <h3>Personal Stories</h3>
+
+                            <p>
+                                Honest reflections on beginnings, setbacks,
+                                relationships, difficult decisions, and
+                                the experiences that change how we see life.
+                            </p>
+
+                            <a
+                                href="category.html?slug=personal-stories"
+                                class="text-link"
+                            >
+                                Explore category <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- Empty search state -->
+
+                <div class="empty-state" id="emptyState">
+
+                    <h3>No categories found</h3>
+
+                    <p>
+                        Try another search term or choose a different filter.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             EDITOR'S PICKS
+        ========================================= -->
+
+        <section class="editors-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <div class="eyebrow">Selected for thoughtful readers</div>
+
+                        <h2>Stories to begin with</h2>
+
+                        <p class="section-description">
+                            Not sure where to start? These stories offer
+                            different perspectives on change, healing,
+                            and the courage to build a meaningful future.
+                        </p>
+
+                    </div>
+
+                    <a href="blog.html" class="text-link">
+                        Visit the journal <span>→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="editors-grid">
+
+
+                    <!-- Story 1 -->
+
+                    <article class="editor-card">
+
+                        <a
+                            href="article.html?slug=starting-again"
+                            class="editor-image"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"
+                                alt="A quiet landscape beneath an open sky"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        <div class="editor-content">
+
+                            <div class="eyebrow">Personal Growth</div>
+
+                            <h3>
+                                <a href="article.html?slug=starting-again">
+                                    The Quiet Courage of Starting Again
+                                </a>
+                            </h3>
+
+                            <p>
+                                Sometimes the bravest decision is to begin
+                                again with the wisdom your experiences gave you.
+                            </p>
+
+                            <a
+                                href="article.html?slug=starting-again"
+                                class="text-link"
+                            >
+                                Read story <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Story 2 -->
+
+                    <article class="editor-card">
+
+                        <a
+                            href="article.html?slug=healing-in-silence"
+                            class="editor-image"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85"
+                                alt="Morning light over a peaceful landscape"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        <div class="editor-content">
+
+                            <div class="eyebrow">Healing & Reflection</div>
+
+                            <h3>
+                                <a href="article.html?slug=healing-in-silence">
+                                    Some Things Heal in Silence
+                                </a>
+                            </h3>
+
+                            <p>
+                                Discover why personal growth sometimes
+                                needs quiet, patience, and room to breathe.
+                            </p>
+
+                            <a
+                                href="article.html?slug=healing-in-silence"
+                                class="text-link"
+                            >
+                                Read story <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Story 3 -->
+
+                    <article class="editor-card">
+
+                        <a
+                            href="article.html?slug=knowing-your-worth"
+                            class="editor-image"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85"
+                                alt="An expansive landscape with distant hills"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        <div class="editor-content">
+
+                            <div class="eyebrow">Self-Worth</div>
+
+                            <h3>
+                                <a href="article.html?slug=knowing-your-worth">
+                                    Learning to Choose Yourself
+                                </a>
+                            </h3>
+
+                            <p>
+                                Understand how self-respect and healthy
+                                boundaries can strengthen your relationships.
+                            </p>
+
+                            <a
+                                href="article.html?slug=knowing-your-worth"
+                                class="text-link"
+                            >
+                                Read story <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             QUOTE
+        ========================================= -->
+
+        <section class="quote-section">
+
+            <div class="quote-inner">
+
+                <div class="quote-mark" aria-hidden="true">“</div>
+
+                <blockquote>
+                    Sometimes, the story you need most is the one that
+                    helps you understand your own.
+                </blockquote>
+
+                <p class="quote-caption">
+                    THE INSIGHT JOURNAL · STORIES THAT STAY WITH YOU
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             NEWSLETTER
+        ========================================= -->
+
+        <section class="newsletter-section">
+
+            <div class="newsletter-inner">
+
+                <div class="eyebrow">Stay connected</div>
+
+                <h2>Let meaningful stories find their way to you.</h2>
+
+                <p>
+                    Discover new perspectives, thoughtful reflections,
+                    and stories worth returning to. Become part of
+                    The Insight Journal community.
+                </p>
+
+                <a href="newsletter.html" class="newsletter-button">
+                    Join the Journal →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-top">
+
+                <div class="footer-brand">
+
+                    <a href="../index.html" class="brand">
+
+                        <span class="brand-name">
+                            The Insight <span>Journal.</span>
+                        </span>
+
+                        <span class="brand-tagline">
+                            Stories that stay with you
+                        </span>
+
+                    </a>
+
+                    <p>
+                        A thoughtful space for stories, honest reflections,
+                        and meaningful perspectives on life, relationships,
+                        and personal growth.
+                    </p>
+
+                </div>
+
+
+                <nav class="footer-links" aria-label="Footer navigation">
+
+                    <a href="../index.html">Home</a>
+                    <a href="blog.html">Journal</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span> The Insight Journal.
+                    All rights reserved.
+                </p>
+
+                <p>Thoughtfully written. Honestly shared.</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /* =========================================
+           1. MOBILE NAVIGATION
+        ========================================= */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = mainNav.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
+
+            menuToggle.textContent = isOpen ? "×" : "☰";
+
+        });
+
+
+        mainNav.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mainNav.classList.remove("open");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        /* =========================================
+           2. CATEGORY FILTERING AND SEARCH
+        ========================================= */
+
+        const filterButtons = document.querySelectorAll(".filter-button");
+
+        const categoryCards = [
+            ...document.querySelectorAll(".category-card")
+        ];
+
+        const categorySearch = document.getElementById("categorySearch");
+
+        const categoryCount = document.getElementById("categoryCount");
+
+        const emptyState = document.getElementById("emptyState");
+
+        let activeFilter = "all";
+
+
+        function filterCategories() {
+
+            const searchTerm = categorySearch.value
+                .trim()
+                .toLowerCase();
+
+            let visibleCount = 0;
+
+            categoryCards.forEach(card => {
+
+                const category = card.dataset.category;
+
+                const searchContent = (
+                    card.dataset.search + " " + card.textContent
+                ).toLowerCase();
+
+                const matchesFilter =
+                    activeFilter === "all" ||
+                    category === activeFilter;
+
+                const matchesSearch =
+                    searchContent.includes(searchTerm);
+
+                const shouldShow =
+                    matchesFilter && matchesSearch;
+
+                card.hidden = !shouldShow;
+
+                if (shouldShow) {
+                    visibleCount++;
+                }
+
+            });
+
+
+            categoryCount.textContent =
+                `Showing ${visibleCount} ${
+                    visibleCount === 1 ? "category" : "categories"
+                }`;
+
+
+            emptyState.classList.toggle(
+                "show",
+                visibleCount === 0
+            );
+
+        }
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                activeFilter = button.dataset.filter;
+
+                filterButtons.forEach(item => {
+
+                    const isActive = item === button;
+
+                    item.classList.toggle("active", isActive);
+
+                    item.setAttribute(
+                        "aria-pressed",
+                        String(isActive)
+                    );
+
+                });
+
+                filterCategories();
+
+            });
+
+        });
+
+
+        categorySearch.addEventListener("input", filterCategories);
+
+
+        /* =========================================
+           3. FOOTER YEAR
+        ========================================= */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        /* =========================================
+           4. INITIALISE PAGE
+        ========================================= */
+
+        filterCategories();
+
+    </script>
+
+</body>
+</html>
